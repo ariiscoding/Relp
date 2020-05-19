@@ -151,7 +151,14 @@ class RestaurantTableViewController: UITableViewController {
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") {(action, sourceView, completionHandler) in
             let defaultText = "Just checking in at " + self.restaurantImages[indexPath.row]
-            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            
+            let activityController: UIActivityViewController
+            
+            if let imageToShare = UIImage(named: self.restaurantImages[indexPath.row]) {
+                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+            } else {
+                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            }
             
             self.present(activityController, animated: true, completion: nil)
             completionHandler(true)
