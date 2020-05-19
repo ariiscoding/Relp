@@ -183,5 +183,41 @@ class RestaurantTableViewController: UITableViewController {
         
         return swipeConfiguration
     }
-
+    
+    //for swipe right action (experimental)
+    override func tableView (_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let checkInAction = UIContextualAction(style: .normal, title:"Check-in") {(action, sourceView, completionHandler) in
+            self.restaurantIsVisited[indexPath.row] = true
+            //tableView.reloadData()
+            tableView.reloadRows(at: [indexPath], with: .none)
+            
+            completionHandler(true)
+        }
+        
+        let unCheckInAction = UIContextualAction(style: .normal, title: "Undo Check-in") {(action, sourceView, completionHandler) in
+            self.restaurantIsVisited[indexPath.row] = false
+            //tableView.reloadData()
+            tableView.reloadRows(at: [indexPath], with: .none)
+            
+            completionHandler(true)
+        }
+        
+        //UI component
+        checkInAction.backgroundColor = UIColor.systemGreen
+        checkInAction.image = UIImage(systemName: "heart")
+        
+        unCheckInAction.backgroundColor = UIColor.systemYellow
+        unCheckInAction.image = UIImage(systemName: "arrow.uturn.left")
+        
+        
+        if (self.restaurantIsVisited[indexPath.row]) {
+            let swipeConfiguration = UISwipeActionsConfiguration(actions: [unCheckInAction])
+            return swipeConfiguration
+        } else {
+            let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
+            return swipeConfiguration
+        }
+        
+    }
 }
