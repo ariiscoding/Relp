@@ -76,7 +76,7 @@
                                     <outlet property="nameLabel" destination="dwM-ds-wI7" id="TG1-PE-WVj"/>
                                     <outlet property="thumbnailImageView" destination="0Sl-OO-WnN" id="cDc-9Y-359"/>
                                     <outlet property="typeLabel" destination="sve-S2-lSq" id="tbB-NM-zEk"/>
-                                    <segue destination="u7s-qc-CFh" kind="show" id="ikl-9h-Rfa"/>
+                                    <segue destination="u7s-qc-CFh" kind="show" identifier="showRestaurantDetail" id="ikl-9h-Rfa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -109,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="-230.43478260869566" y="-91.071428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Restaurant Detail View Controller-->
         <scene sceneID="QIm-2a-UNI">
             <objects>
-                <viewController id="u7s-qc-CFh" sceneMemberID="viewController">
+                <viewController id="u7s-qc-CFh" customClass="RestaurantDetailViewController" customModule="Relp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NT3-3L-Rpj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +131,9 @@
                         <viewLayoutGuide key="safeArea" id="XE9-PQ-MTN"/>
                     </view>
                     <navigationItem key="navigationItem" id="fey-Ru-gr1"/>
+                    <connections>
+                        <outlet property="restaurantImageView" destination="fB8-pq-6kq" id="a1d-32-Mkr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baN-IG-E1J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72A4323D24752195000185CE /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4323C24752195000185CE /* RestaurantDetailViewController.swift */; };
 		F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C333292365F91600D3A311 /* AppDelegate.swift */; };
 		F4C3332C2365F91600D3A311 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3332B2365F91600D3A311 /* SceneDelegate.swift */; };
 		F4C333312365F91600D3A311 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C3332F2365F91600D3A311 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		72A4323C24752195000185CE /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		F4C333262365F91600D3A311 /* Relp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C333292365F91600D3A311 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4C3332B2365F91600D3A311 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				F4C333372365F91800D3A311 /* Info.plist */,
 				F4C3333D2365FAF100D3A311 /* RestaurantTableViewController.swift */,
 				F4C3333F236603E800D3A311 /* RestaurantTableViewCell.swift */,
+				72A4323C24752195000185CE /* RestaurantDetailViewController.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				F4C33340236603E800D3A311 /* RestaurantTableViewCell.swift in Sources */,
 				F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */,
+				72A4323D24752195000185CE /* RestaurantDetailViewController.swift in Sources */,
 				F4C3332C2365F91600D3A311 /* SceneDelegate.swift in Sources */,
 				F4C3333E2365FAF100D3A311 /* RestaurantTableViewController.swift in Sources */,
 			);
