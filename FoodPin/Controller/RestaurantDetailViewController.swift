@@ -14,11 +14,6 @@ class RestaurantDetailViewController: UIViewController {
     @IBOutlet var restaurantTypeLabel : UILabel!
     @IBOutlet var restaurantLocationLabel : UILabel!
     
-//    var restaurantImageName = ""
-//    var restaurantName = ""
-//    var restaurantType = ""
-//    var restaurantLocation = ""
-    
     var restaurant = Restaurant()
     
 
