@@ -41,6 +41,7 @@ class RestaurantTableViewController: UITableViewController {
     Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "Lond on", image: "caskpubkitchen", isVisited: false)
     ]
     
+    //MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -164,6 +165,8 @@ class RestaurantTableViewController: UITableViewController {
 //        }
 //    }
     
+    //MARK: - Table view data source
+    
     //a better implementation to support swipe for more actions
     override func tableView (_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
@@ -215,6 +218,8 @@ class RestaurantTableViewController: UITableViewController {
         
         return swipeConfiguration
     }
+    
+    //MARK: - Table swipe actions
     
     //for swipe right action (experimental)
     override func tableView (_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
