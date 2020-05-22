@@ -151,13 +151,17 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-tick" translatesAutoresizingMaskIntoConstraints="NO" id="Ev1-0o-JPq" userLabel="Heart Image View">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ev1-0o-JPq" userLabel="Heart Image View">
                                             <rect key="frame" x="128" y="324.5" width="15" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="3l5-Fd-7Jp"/>
                                                 <constraint firstAttribute="width" constant="15" id="5MJ-cs-vlG"/>
                                             </constraints>
                                         </imageView>
+                                        <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQ8-tA-Qud" userLabel="Dim View">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyW-3r-S0M" userLabel="Name Label">
                                             <rect key="frame" x="14" y="277" width="91.5" height="42"/>
                                             <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="35"/>
@@ -169,7 +173,9 @@
                                     <constraints>
                                         <constraint firstItem="z2x-66-ulz" firstAttribute="leading" secondItem="tLF-XK-Gmh" secondAttribute="leading" constant="14" id="6iD-zA-yS1"/>
                                         <constraint firstItem="6mn-dg-z1G" firstAttribute="top" secondItem="tLF-XK-Gmh" secondAttribute="top" id="AE8-O2-F1j"/>
+                                        <constraint firstItem="EQ8-tA-Qud" firstAttribute="leading" secondItem="tLF-XK-Gmh" secondAttribute="leading" id="IfT-Tt-D6R"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QyW-3r-S0M" secondAttribute="trailing" constant="50" id="Oge-yd-ox7"/>
+                                        <constraint firstAttribute="bottom" secondItem="EQ8-tA-Qud" secondAttribute="bottom" id="PyJ-59-dVb"/>
                                         <constraint firstItem="z2x-66-ulz" firstAttribute="top" secondItem="QyW-3r-S0M" secondAttribute="bottom" constant="3" id="TAs-tg-RAq"/>
                                         <constraint firstItem="QyW-3r-S0M" firstAttribute="leading" secondItem="z2x-66-ulz" secondAttribute="leading" id="XKt-EZ-fvU"/>
                                         <constraint firstAttribute="trailing" secondItem="6mn-dg-z1G" secondAttribute="trailing" id="Xox-60-OOU"/>
@@ -177,11 +183,13 @@
                                         <constraint firstItem="Ev1-0o-JPq" firstAttribute="leading" secondItem="z2x-66-ulz" secondAttribute="trailing" constant="14" id="jMZ-u0-r0O"/>
                                         <constraint firstItem="Ev1-0o-JPq" firstAttribute="centerY" secondItem="z2x-66-ulz" secondAttribute="centerY" id="oMj-xq-8w6"/>
                                         <constraint firstAttribute="bottom" secondItem="z2x-66-ulz" secondAttribute="bottom" constant="8" id="pYu-YM-88O"/>
+                                        <constraint firstAttribute="trailing" secondItem="EQ8-tA-Qud" secondAttribute="trailing" id="yRD-Nf-aah"/>
                                         <constraint firstAttribute="bottom" secondItem="6mn-dg-z1G" secondAttribute="bottom" id="z99-4d-iDH"/>
+                                        <constraint firstItem="EQ8-tA-Qud" firstAttribute="top" secondItem="tLF-XK-Gmh" secondAttribute="top" id="zcL-HJ-9FF"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="headerImageView" destination="6mn-dg-z1G" id="8V4-Or-xWk"/>
-                                        <outlet property="heartImageView" destination="Ev1-0o-JPq" id="SPN-D0-LGz"/>
+                                        <outlet property="heartImageView" destination="Ev1-0o-JPq" id="c1f-SB-Sag"/>
                                         <outlet property="nameLabel" destination="QyW-3r-S0M" id="GNI-Qq-hQb"/>
                                         <outlet property="typeLabel" destination="z2x-66-ulz" id="i3A-qx-E4y"/>
                                     </connections>
