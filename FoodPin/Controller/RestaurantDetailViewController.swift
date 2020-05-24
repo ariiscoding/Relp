@@ -64,6 +64,13 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         
         //hide separators
         tableView.separatorStyle = .none
+        
+        //customize navigation bar
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .white
+        //move the table upward because the navigation bar is transparent now
+        tableView.contentInsetAdjustmentBehavior = .never
     }
     
 
