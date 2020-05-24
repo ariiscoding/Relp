@@ -71,6 +71,17 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         navigationController?.navigationBar.tintColor = .white
         //move the table upward because the navigation bar is transparent now
         tableView.contentInsetAdjustmentBehavior = .never
+        
+        //override the hiding navigation bar option we defined in table view controller
+        navigationController?.hidesBarsOnSwipe = false 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //override the hiding navigation bar option we defined in table view controller
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
 
