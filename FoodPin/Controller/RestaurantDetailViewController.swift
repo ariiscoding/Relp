@@ -88,6 +88,13 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         //override the hiding navigation bar option we defined in table view controller
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        //for past-iOS 13.4 Status Bar modification
+        navigationController?.navigationBar.barStyle = .black
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.barStyle = .default
     }
     
 

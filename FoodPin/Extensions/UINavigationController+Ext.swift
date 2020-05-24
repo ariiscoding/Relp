@@ -12,8 +12,7 @@ import UIKit
 extension UINavigationController {
     open override var childForStatusBarStyle: UIViewController? {
         //override this function so we can change Status Bar individually for each view
-        print("childForStatusBarStyle called")
-        return self.topViewController
+        return topViewController
     }
     
 }
