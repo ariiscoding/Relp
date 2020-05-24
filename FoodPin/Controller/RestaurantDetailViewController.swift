@@ -76,6 +76,12 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         navigationController?.hidesBarsOnSwipe = false 
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        //TODO: this part is not working yet
+        print("preferredStatusBarStyle called")
+        return .lightContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

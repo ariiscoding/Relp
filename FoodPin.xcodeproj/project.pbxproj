@@ -21,6 +21,7 @@
 		724E68862478990000191F34 /* RestaurantDetailIconTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724E68852478990000191F34 /* RestaurantDetailIconTextCell.swift */; };
 		724E688824789A3F00191F34 /* RestaurantDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724E688724789A3F00191F34 /* RestaurantDetailTextCell.swift */; };
 		728AC3AD247A11C200C08D7B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728AC3AC247A11C200C08D7B /* UIColor+Ext.swift */; };
+		728AC3AF247A155200C08D7B /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728AC3AE247A155200C08D7B /* UINavigationController+Ext.swift */; };
 		72A4323D24752195000185CE /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4323C24752195000185CE /* RestaurantDetailViewController.swift */; };
 		72A4324124761F08000185CE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4324024761F08000185CE /* Restaurant.swift */; };
 		F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C333292365F91600D3A311 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		724E68852478990000191F34 /* RestaurantDetailIconTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailIconTextCell.swift; sourceTree = "<group>"; };
 		724E688724789A3F00191F34 /* RestaurantDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTextCell.swift; sourceTree = "<group>"; };
 		728AC3AC247A11C200C08D7B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		728AC3AE247A155200C08D7B /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		72A4323C24752195000185CE /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		72A4324024761F08000185CE /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		F4C333262365F91600D3A311 /* Relp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				728AC3AC247A11C200C08D7B /* UIColor+Ext.swift */,
+				728AC3AE247A155200C08D7B /* UINavigationController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				728AC3AF247A155200C08D7B /* UINavigationController+Ext.swift in Sources */,
 				F4C33340236603E800D3A311 /* RestaurantTableViewCell.swift in Sources */,
 				724E688824789A3F00191F34 /* RestaurantDetailTextCell.swift in Sources */,
 				F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */,
