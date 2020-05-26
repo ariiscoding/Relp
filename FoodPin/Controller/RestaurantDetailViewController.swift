@@ -110,6 +110,14 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.barStyle = .default
     }
+    
+    override func prepare (for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMap" {
+            let destinationController = segue.destination as! MapViewController
+            
+            destinationController.restaurant = restaurant
+        }
+    }
 
 
     /*

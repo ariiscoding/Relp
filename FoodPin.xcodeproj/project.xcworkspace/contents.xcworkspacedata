@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FoodPin.xcodeproj">
+      location = "self:/Users/ariqhe/Documents/Personal Documents/UCLA/2019-2020/Programming/AppCoda Mastering Swift Programming/Projects/Relp/FoodPin.xcodeproj">
    </FileRef>
 </Workspace>

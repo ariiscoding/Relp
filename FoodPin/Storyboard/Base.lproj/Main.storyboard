@@ -125,7 +125,7 @@
             <objects>
                 <viewController id="u7s-qc-CFh" customClass="RestaurantDetailViewController" customModule="Relp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NT3-3L-Rpj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KIF-o5-yl5">
@@ -419,7 +419,7 @@
                             <outlet property="delegate" destination="ucc-rs-3eB" id="6ns-SK-9kY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="FoodPin" id="5Rn-cP-HLo">
+                    <navigationItem key="navigationItem" title="Relp" id="5Rn-cP-HLo">
                         <barButtonItem key="backBarButtonItem" title=" " id="avY-oy-Zmh"/>
                     </navigationItem>
                 </tableViewController>
@@ -427,16 +427,16 @@
             </objects>
             <point key="canvasLocation" x="632" y="-91"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="HBu-fe-Qrq">
             <objects>
-                <viewController id="2W0-zq-2Oj" sceneMemberID="viewController">
+                <viewController id="2W0-zq-2Oj" customClass="MapViewController" customModule="Relp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P36-2o-tkR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yMQ-hc-erf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -449,6 +449,9 @@
                         <viewLayoutGuide key="safeArea" id="t2v-A2-91f"/>
                     </view>
                     <navigationItem key="navigationItem" id="m6a-wS-Nn0"/>
+                    <connections>
+                        <outlet property="mapView" destination="yMQ-hc-erf" id="tjY-7o-mRp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A1K-p3-2uN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -456,7 +459,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WbG-Rh-oiP"/>
+        <segue reference="ikl-9h-Rfa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart-tick" width="22" height="21"/>
