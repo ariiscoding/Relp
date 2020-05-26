@@ -1,5 +1,7 @@
 
 import UIKit
+import MapKit
+
 
 class RestaurantDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -44,7 +46,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
-            cell.selectionStyle = .none
+            cell.configure(location: restaurant.location)
             
             return cell
             
@@ -90,7 +92,6 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        //TODO: this part is not working yet
         print("preferredStatusBarStyle called")
         return .lightContent
     }
@@ -109,7 +110,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.barStyle = .default
     }
-    
+
 
     /*
     // MARK: - Navigation

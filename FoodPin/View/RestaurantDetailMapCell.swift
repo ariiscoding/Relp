@@ -24,5 +24,36 @@ class RestaurantDetailMapCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configure (location: String) {
+        //get location
+        let geoCoder = CLGeocoder()
+        
+        print(location)
+        geoCoder.geocodeAddressString(location, completionHandler: {placemarks, error in
+            if let error = error {
+                print (error.localizedDescription)
+                return
+            }
+            
+            if let placemarks = placemarks {
+                //get the first placemark
+                let placemark = placemarks[0]
+                
+                //add annotation
+                let annotation = MKPointAnnotation()
+                
+                if let location = placemark.location {
+                    //Display the annotation
+                    annotation.coordinate = location.coordinate
+                    self.mapView.addAnnotation(annotation)
+                    
+                    //set the zoom level
+                    let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 250, longitudinalMeters: 250)
+                    self.mapView.setRegion(region, animated: false)
+                }
+            }
+        })
+    }
 
 }
