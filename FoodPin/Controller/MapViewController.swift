@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet var mapView: MKMapView!
     
@@ -17,6 +17,9 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //for MKMapViewDelegate
+        mapView.delegate = self
         
         //Convert address to coordinate and annotate it on map
         let geoCoder = CLGeocoder()
@@ -44,6 +47,34 @@ class MapViewController: UIViewController {
                 }
             }
         })
+        
+        //map customization
+        mapView.showsTraffic = true
+        mapView.showsCompass = true
+        mapView.showsScale = true
+    }
+    
+    //this function is called whenever the map needs annotation data
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "MyMarker"
+        
+        if annotation.isKind(of: MKUserLocation.self) {
+            //we don't want to change the user's current location's annotation
+            return nil
+        }
+        
+        //Reuse the annotation if possible
+        var annotationView: MKMarkerAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+        
+        //in case there is no reusable ones available, we create a new one
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        
+        annotationView?.glyphText = "😋"
+        annotationView?.markerTintColor = UIColor.orange
+        
+        return annotationView
     }
     
 
