@@ -193,6 +193,34 @@
                                         <outlet property="typeLabel" destination="MeY-kJ-WHG" id="2z3-To-uSS"/>
                                     </connections>
                                 </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="IxY-GY-Xra">
+                                    <rect key="frame" x="0.0" y="760.5" width="414" height="90"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUE-5Y-JIt">
+                                            <rect key="frame" x="15" y="22" width="384" height="47"/>
+                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="47" id="Of8-Mu-9Qo"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <state key="normal" title="Rate it">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="zUE-5Y-JIt" firstAttribute="leading" secondItem="IxY-GY-Xra" secondAttribute="leading" constant="15" id="DxZ-Lr-eaE"/>
+                                        <constraint firstAttribute="trailing" secondItem="zUE-5Y-JIt" secondAttribute="trailing" constant="15" id="NUK-ji-PNV"/>
+                                        <constraint firstAttribute="bottom" secondItem="zUE-5Y-JIt" secondAttribute="bottom" constant="21" id="ORS-7E-TFa"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailIconTextCell" id="1Xs-WN-lGz" customClass="RestaurantDetailIconTextCell" customModule="Relp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="378" width="414" height="45"/>
