@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		723141FF24983DDA00F9428C /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723141FE24983DDA00F9428C /* ReviewViewController.swift */; };
 		724E6879247886CC00191F34 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 724E686F247886CB00191F34 /* Rubik-Italic.ttf */; };
 		724E687A247886CC00191F34 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 724E6870247886CB00191F34 /* Rubik-BlackItalic.ttf */; };
 		724E687B247886CC00191F34 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 724E6871247886CB00191F34 /* Rubik-Light.ttf */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		723141FE24983DDA00F9428C /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		724E686F247886CB00191F34 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
 		724E6870247886CB00191F34 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
 		724E6871247886CB00191F34 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				F4C3333D2365FAF100D3A311 /* RestaurantTableViewController.swift */,
 				72A4323C24752195000185CE /* RestaurantDetailViewController.swift */,
 				728AC3B7247C9D8500C08D7B /* MapViewController.swift */,
+				723141FE24983DDA00F9428C /* ReviewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				728AC3AF247A155200C08D7B /* UINavigationController+Ext.swift in Sources */,
 				F4C33340236603E800D3A311 /* RestaurantTableViewCell.swift in Sources */,
+				723141FF24983DDA00F9428C /* ReviewViewController.swift in Sources */,
 				724E688824789A3F00191F34 /* RestaurantDetailTextCell.swift in Sources */,
 				F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */,
 				72A4324124761F08000185CE /* Restaurant.swift in Sources */,
