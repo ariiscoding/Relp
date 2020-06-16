@@ -393,20 +393,20 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iRI-lz-u2J">
-                                <rect key="frame" x="93.5" y="207.5" width="227" height="481"/>
+                                <rect key="frame" x="94" y="207.5" width="226" height="481"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b79-58-l8P">
-                                        <rect key="frame" x="0.0" y="0.0" width="188" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="82"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Love" image="love"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJ0-3u-RIP">
-                                        <rect key="frame" x="0.0" y="92" width="181" height="83"/>
+                                        <rect key="frame" x="0.0" y="92" width="183" height="83"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Cool" image="cool"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-dD-fRO">
-                                        <rect key="frame" x="0.0" y="185" width="227" height="86"/>
+                                        <rect key="frame" x="0.0" y="185" width="226" height="86"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Happy" image="happy"/>
                                     </button>
@@ -416,7 +416,7 @@
                                         <state key="normal" title="Sad" image="sad"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUg-YT-lLR">
-                                        <rect key="frame" x="0.0" y="378" width="218" height="103"/>
+                                        <rect key="frame" x="0.0" y="378" width="209" height="103"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Angry" image="angry"/>
                                     </button>
@@ -440,6 +440,11 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="ynV-Bf-qKB" id="SGW-0l-Rvo"/>
+                        <outletCollection property="rateButtons" destination="b79-58-l8P" collectionClass="NSMutableArray" id="YpF-de-nhD"/>
+                        <outletCollection property="rateButtons" destination="kJ0-3u-RIP" collectionClass="NSMutableArray" id="7TJ-eW-6uc"/>
+                        <outletCollection property="rateButtons" destination="r8y-dD-fRO" collectionClass="NSMutableArray" id="N14-6o-fvP"/>
+                        <outletCollection property="rateButtons" destination="xZz-xL-cVY" collectionClass="NSMutableArray" id="0hW-UQ-Ja2"/>
+                        <outletCollection property="rateButtons" destination="IUg-YT-lLR" collectionClass="NSMutableArray" id="RSD-Ie-i6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMW-i2-nPo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
