@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		723141FF24983DDA00F9428C /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723141FE24983DDA00F9428C /* ReviewViewController.swift */; };
 		72314201249961DB00F9428C /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72314200249961DB00F9428C /* RoundedTextField.swift */; };
+		723142032499643800F9428C /* NewRestaurantControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723142022499643800F9428C /* NewRestaurantControllerTableViewController.swift */; };
 		724E6879247886CC00191F34 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 724E686F247886CB00191F34 /* Rubik-Italic.ttf */; };
 		724E687A247886CC00191F34 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 724E6870247886CB00191F34 /* Rubik-BlackItalic.ttf */; };
 		724E687B247886CC00191F34 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 724E6871247886CB00191F34 /* Rubik-Light.ttf */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		723141FE24983DDA00F9428C /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		72314200249961DB00F9428C /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		723142022499643800F9428C /* NewRestaurantControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRestaurantControllerTableViewController.swift; sourceTree = "<group>"; };
 		724E686F247886CB00191F34 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
 		724E6870247886CB00191F34 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
 		724E6871247886CB00191F34 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				72A4323C24752195000185CE /* RestaurantDetailViewController.swift */,
 				728AC3B7247C9D8500C08D7B /* MapViewController.swift */,
 				723141FE24983DDA00F9428C /* ReviewViewController.swift */,
+				723142022499643800F9428C /* NewRestaurantControllerTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				72A4324124761F08000185CE /* Restaurant.swift in Sources */,
 				724E688424788D6E00191F34 /* RestaurantDetailHeaderView.swift in Sources */,
 				72A4323D24752195000185CE /* RestaurantDetailViewController.swift in Sources */,
+				723142032499643800F9428C /* NewRestaurantControllerTableViewController.swift in Sources */,
 				728AC3B4247C91C300C08D7B /* RestaurantDetailSeparatorCell.swift in Sources */,
 				728AC3B6247C92AE00C08D7B /* RestaurantDetailMapCell.swift in Sources */,
 				F4C3332C2365F91600D3A311 /* SceneDelegate.swift in Sources */,
