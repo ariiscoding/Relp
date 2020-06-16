@@ -62,6 +62,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You need to grant the app access to your photo library so you can pick a photo for the restaurant.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>You need to grant the app access to your camera in order to take photos.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>
