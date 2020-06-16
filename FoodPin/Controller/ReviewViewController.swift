@@ -92,45 +92,66 @@ class ReviewViewController: UIViewController {
 //    }
       
     
-    //animation for buttons: method 3 (slide in)
-    override func viewWillAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.8, delay: 0.1, options: [], animations: {
-            self.rateButtons[0].alpha = 1.0
-            self.rateButtons[0].transform = .identity //remove predefined transformations
-        }, completion: nil)
-        
-//        UIView.animate(withDuration: 0.8, delay: 0.1, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.3, options: [], animations: {
+//    //animation for buttons: method 3 (slide in)
+//    override func viewWillAppear(_ animated: Bool) {
+//        UIView.animate(withDuration: 0.8, delay: 0.1, options: [], animations: {
 //            self.rateButtons[0].alpha = 1.0
 //            self.rateButtons[0].transform = .identity //remove predefined transformations
 //        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.15, options: [], animations: {
-            self.rateButtons[1].alpha = 1.0
-            self.rateButtons[1].transform = .identity //remove predefined transformations
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.2, options: [], animations: {
-            self.rateButtons[2].alpha = 1.0
-            self.rateButtons[2].transform = .identity //remove predefined transformations
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.25, options: [], animations: {
-            self.rateButtons[3].alpha = 1.0
-            self.rateButtons[3].transform = .identity //remove predefined transformations
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.3, options: [], animations: {
-            self.rateButtons[4].alpha = 1.0
-            self.rateButtons[4].transform = .identity //remove predefined transformations
-        }, completion: nil)
-        
-        //for the close button
-        UIView.animate(withDuration: 0.4, delay: 0.35, options:[], animations: {
-            self.closeButton.alpha = 1.0
-            self.closeButton.transform = .identity
-        }, completion: nil)
-    }
+//
+////        UIView.animate(withDuration: 0.8, delay: 0.1, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.3, options: [], animations: {
+////            self.rateButtons[0].alpha = 1.0
+////            self.rateButtons[0].transform = .identity //remove predefined transformations
+////        }, completion: nil)
+//
+//        UIView.animate(withDuration: 0.4, delay: 0.15, options: [], animations: {
+//            self.rateButtons[1].alpha = 1.0
+//            self.rateButtons[1].transform = .identity //remove predefined transformations
+//        }, completion: nil)
+//
+//        UIView.animate(withDuration: 0.4, delay: 0.2, options: [], animations: {
+//            self.rateButtons[2].alpha = 1.0
+//            self.rateButtons[2].transform = .identity //remove predefined transformations
+//        }, completion: nil)
+//
+//        UIView.animate(withDuration: 0.4, delay: 0.25, options: [], animations: {
+//            self.rateButtons[3].alpha = 1.0
+//            self.rateButtons[3].transform = .identity //remove predefined transformations
+//        }, completion: nil)
+//
+//        UIView.animate(withDuration: 0.4, delay: 0.3, options: [], animations: {
+//            self.rateButtons[4].alpha = 1.0
+//            self.rateButtons[4].transform = .identity //remove predefined transformations
+//        }, completion: nil)
+//
+//        //for the close button
+//        UIView.animate(withDuration: 0.4, delay: 0.35, options:[], animations: {
+//            self.closeButton.alpha = 1.0
+//            self.closeButton.transform = .identity
+//        }, completion: nil)
+//    }
 
+    
+    //animation for buttons: method 3 (slide in, but with loop)
+        override func viewWillAppear(_ animated: Bool) {
+            for index in 0...4{
+                let delaySeconds = 0.1 + (0.05 * (Double)(index))
+                UIView.animate(withDuration: 0.4, delay: delaySeconds, options:[], animations: {
+                    self.rateButtons[index].alpha = 1.0
+                    self.rateButtons[index].transform = .identity
+                }, completion: nil)
+            }
+            
+            //for the close button
+            UIView.animate(withDuration: 0.4, delay: 0.35, options:[], animations: {
+                self.closeButton.alpha = 1.0
+                self.closeButton.transform = .identity
+            }, completion: nil)
+        }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
