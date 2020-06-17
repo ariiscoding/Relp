@@ -46,7 +46,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
-            cell.configure(location: restaurant.location)
+            if let restaurantLocation = restaurant.location {
+                cell.configure(location: restaurantLocation)
+            }
             
             return cell
             
@@ -56,7 +58,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     }
     
     
-    var restaurant = Restaurant()
+    var restaurant: RestaurantMO!
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: RestaurantDetailHeaderView!
@@ -74,8 +76,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         //configure header view
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
-        headerView.headerImageView.image = UIImage(named: restaurant.image)
         headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
+        if let restaurantImage = restaurant.image {
+            headerView.headerImageView.image = UIImage(data: restaurantImage as Data)
+        }
         
         //hide separators
         tableView.separatorStyle = .none
