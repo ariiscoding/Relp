@@ -1,9 +1,12 @@
 import UIKit
+import CoreData
 
-class RestaurantTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     
     var restaurants: [RestaurantMO] = []
+    var fetchResultController: NSFetchedResultsController<RestaurantMO>!
+    @IBOutlet var emptyRestaurantView: UIView!
     
     //MARK: - View controller life cycle
     override func viewDidLoad() {
@@ -19,6 +22,30 @@ class RestaurantTableViewController: UITableViewController {
         
         //hide the navigation bar when scrolling (similar to Safari)
         navigationController?.hidesBarsOnSwipe = true
+        
+        //Prepare the empty view
+        tableView.backgroundView = emptyRestaurantView
+        tableView.backgroundView?.isHidden = true
+        
+        //Fetch data from data store
+        let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultController.delegate = self
+            
+            do {
+                try fetchResultController.performFetch()
+                if let fetchedObjects = fetchResultController.fetchedObjects {
+                    restaurants = fetchedObjects
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +57,14 @@ class RestaurantTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if restaurants.count > 0 {
+            tableView.backgroundView?.isHidden = true
+            tableView.separatorStyle = .singleLine
+        } else {
+            tableView.backgroundView?.isHidden = false
+            tableView.separatorStyle = .none
+        }
+        
         return 1
     }
 
@@ -62,9 +97,14 @@ class RestaurantTableViewController: UITableViewController {
     //a better implementation to support swipe for more actions
     override func tableView (_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
-            self.restaurants.remove(at: indexPath.row)
-            
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            //Delete the row from the data store
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let restaurantToDelete = self.fetchResultController.object(at: indexPath)
+                context.delete(restaurantToDelete)
+                
+                appDelegate.saveContext()
+            }
             
             completionHandler(true)
         }
@@ -146,5 +186,43 @@ class RestaurantTableViewController: UITableViewController {
     //unwind segue
     @IBAction func unwindToHome (segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    //MARK: - Data Core Controller
+    
+    //this is called when NSFetchedResultsController is about to start processing the content change
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    //called when there is a change to the managed object context
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+        }
+        
+        if let fetchedObjects = controller.fetchedObjects {
+            restaurants = fetchedObjects as! [RestaurantMO]
+        }
+    }
+    
+    //called when changes are complete. We tell table views to animate the changes
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
 }

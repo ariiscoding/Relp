@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class NewRestaurantControllerTableViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var restaurant: RestaurantMO!
     
     @IBOutlet var photoImageView: UIImageView!
     
@@ -51,22 +54,36 @@ class NewRestaurantControllerTableViewController: UITableViewController, UITextF
     
     //this is for the save button
     @IBAction func saveButtonTapped() {
-        let restaurant = Restaurant.init()
-        
-        restaurant.name = nameTextField.text ?? ""
-        restaurant.type = typeTextField.text ?? ""
-        restaurant.location = addressTextField.text ?? ""
-        restaurant.phone = phoneTextField.text ?? ""
-        restaurant.description = descriptionTextView.text ?? ""
-        
-        //validate the fields
-        if (restaurant.name=="" || restaurant.type=="" || restaurant.location=="" || restaurant.phone == "" || restaurant.description == "") {
+        if nameTextField.text == "" || typeTextField.text == "" || addressTextField.text == "" || phoneTextField.text == "" || descriptionTextView.text == "" {
             showSaveButtonWarning()
-        } else {
-            restaurant.printInConsole()
-            //dimiss the current view and go back to the last view
-            dismiss(animated: true, completion: nil)
+            
+            return
         }
+        
+        print("Name: \(nameTextField.text ?? "")")
+        print("Type: \(typeTextField.text ?? "")")
+        print("Location: \(addressTextField.text ?? "")")
+        print("Phone: \(phoneTextField.text ?? "")")
+        print("Description: \(descriptionTextView.text ?? "")")
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
+            restaurant.name = nameTextField.text
+            restaurant.type = typeTextField.text
+            restaurant.location = addressTextField.text
+            restaurant.phone = phoneTextField.text
+            restaurant.summary = descriptionTextView.text
+            restaurant.isVisited = false
+            
+            if let restaurantImage = photoImageView.image {
+                restaurant.image = restaurantImage.pngData()
+            }
+            
+            print("Saving data to context...")
+            appDelegate.saveContext()
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     func showSaveButtonWarning() {
