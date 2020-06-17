@@ -25,4 +25,12 @@ class Restaurant {
     convenience init() {
         self.init(name: "", type: "", location: "", phone: "", description: "", image: "", isVisited: false)
     }
+    
+    func printInConsole() {
+        print("Name: \(name)")
+        print("Type: \(type)")
+        print("Location: \(location)")
+        print("Phone: \(phone)")
+        print("Description: \(description)")
+    }
 }

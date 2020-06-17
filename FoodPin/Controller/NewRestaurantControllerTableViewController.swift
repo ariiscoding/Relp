@@ -49,6 +49,34 @@ class NewRestaurantControllerTableViewController: UITableViewController, UITextF
         }
     }
     
+    //this is for the save button
+    @IBAction func saveButtonTapped() {
+        let restaurant = Restaurant.init()
+        
+        restaurant.name = nameTextField.text ?? ""
+        restaurant.type = typeTextField.text ?? ""
+        restaurant.location = addressTextField.text ?? ""
+        restaurant.phone = phoneTextField.text ?? ""
+        restaurant.description = descriptionTextView.text ?? ""
+        
+        //validate the fields
+        if (restaurant.name=="" || restaurant.type=="" || restaurant.location=="" || restaurant.phone == "" || restaurant.description == "") {
+            showSaveButtonWarning()
+        } else {
+            restaurant.printInConsole()
+            //dimiss the current view and go back to the last view
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func showSaveButtonWarning() {
+        let alert = UIAlertController(title:"Fields missing", message: "You have some fields left blank. Please note that all fields are required.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default action"), style: .default))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextTextField = view.viewWithTag(textField.tag+1) {
             textField.resignFirstResponder() //remove focus
