@@ -92,7 +92,12 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         tableView.contentInsetAdjustmentBehavior = .never
         
         //override the hiding navigation bar option we defined in table view controller
-        navigationController?.hidesBarsOnSwipe = false 
+        navigationController?.hidesBarsOnSwipe = false
+        
+        //display ratings
+        if let rating = restaurant.rating {
+            headerView.ratingImageView.image = UIImage(named: rating)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -138,6 +143,11 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             if let rating = segue.identifier {
                 self.restaurant.rating = rating
                 self.headerView.ratingImageView.image = UIImage(named: rating)
+                
+                //save to the database
+                if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                    appDelegate.saveContext()
+                }
                 
                 let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
                 self.headerView.ratingImageView.transform = scaleTransform
