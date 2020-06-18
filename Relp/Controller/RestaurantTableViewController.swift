@@ -263,9 +263,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     //search logic
     func filterContent(for searchText: String) {
         searchResults = restaurants.filter({(restaurant) -> Bool in
-            if let name = restaurant.name {
-                let isMatch = name.localizedCaseInsensitiveContains(searchText)
-                return isMatch
+            if let name = restaurant.name, let location = restaurant.location, let type = restaurant.type {
+                return name.localizedCaseInsensitiveContains(searchText) || location.localizedCaseInsensitiveContains(searchText) || type.localizedCaseInsensitiveContains(searchText)
             }
             
             return false
