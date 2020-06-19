@@ -209,6 +209,9 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
                 
                 destinationController.restaurant = restaurants[indexPath.row]
                 destinationController.restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
+                
+                //hide destination bar
+                destinationController.hidesBottomBarWhenPushed = true
             }
         }
     }
@@ -276,6 +279,20 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         if let searchText = searchController.searchBar.text {
             filterContent(for: searchText)
             tableView.reloadData()
+        }
+    }
+    
+    
+    //present the walkthrough view controller
+    override func viewDidAppear(_ animated: Bool) {
+        //if viewed walkthrough before
+        if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
+            return 
+        }
+        
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
+            present(walkthroughViewController, animated: true, completion: nil)
         }
     }
 }
