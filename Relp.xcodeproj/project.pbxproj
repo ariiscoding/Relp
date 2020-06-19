@@ -13,6 +13,8 @@
 		723F34CC249CAB370056E21F /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723F34CA249CAB370056E21F /* About.storyboard */; };
 		723F34CE249CABA00056E21F /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723F34CD249CABA00056E21F /* Discover.storyboard */; };
 		723F34D0249CAFF40056E21F /* AboutTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723F34CF249CAFF40056E21F /* AboutTableTableViewController.swift */; };
+		723F34D2249CB6A40056E21F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723F34D1249CB6A40056E21F /* WebViewController.swift */; };
+		723F34D4249CB9900056E21F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723F34D3249CB9900056E21F /* WebKit.framework */; };
 		724B2D5F249BF82800EAB776 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 724B2D5E249BF82700EAB776 /* Onboarding.storyboard */; };
 		724B2D61249C0D9700EAB776 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B2D60249C0D9700EAB776 /* WalkthroughContentViewController.swift */; };
 		724B2D63249C106600EAB776 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B2D62249C106600EAB776 /* WalkthroughPageViewController.swift */; };
@@ -55,6 +57,8 @@
 		723F34CB249CAB370056E21F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Relp/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		723F34CD249CABA00056E21F /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		723F34CF249CAFF40056E21F /* AboutTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableTableViewController.swift; sourceTree = "<group>"; };
+		723F34D1249CB6A40056E21F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		723F34D3249CB9900056E21F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		724B2D5E249BF82700EAB776 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		724B2D60249C0D9700EAB776 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		724B2D62249C106600EAB776 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				723F34D4249CB9900056E21F /* WebKit.framework in Frameworks */,
 				728AC3B2247C8DC900C08D7B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +121,7 @@
 				724B2D62249C106600EAB776 /* WalkthroughPageViewController.swift */,
 				724B2D64249C176A00EAB776 /* WalkthroughViewController.swift */,
 				723F34CF249CAFF40056E21F /* AboutTableTableViewController.swift */,
+				723F34D1249CB6A40056E21F /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 		728AC3B0247C8DC900C08D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				723F34D3249CB9900056E21F /* WebKit.framework */,
 				728AC3B1247C8DC900C08D7B /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -329,6 +336,7 @@
 				728AC3B4247C91C300C08D7B /* RestaurantDetailSeparatorCell.swift in Sources */,
 				723F34D0249CAFF40056E21F /* AboutTableTableViewController.swift in Sources */,
 				728AC3B6247C92AE00C08D7B /* RestaurantDetailMapCell.swift in Sources */,
+				723F34D2249CB6A40056E21F /* WebViewController.swift in Sources */,
 				724B2D61249C0D9700EAB776 /* WalkthroughContentViewController.swift in Sources */,
 				F4C3332C2365F91600D3A311 /* SceneDelegate.swift in Sources */,
 				724B2D65249C176A00EAB776 /* WalkthroughViewController.swift in Sources */,

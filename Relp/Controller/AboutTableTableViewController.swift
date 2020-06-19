@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutTableTableViewController: UITableViewController {
     
     var sectionTitles = ["Feedback", "Follow Us"]
-    var sectionContent = [[(image: "store", text: "Rate us on App Store", link: "https://www.apple.com/ios/app-store/"),(image: "chat", text: "Tell us your feedback", link : "http://www.appcoda.com/contact")],[(image: "twitter", text: "Twitter", link: "https:// twitter.com/appcodamobile"),(image: "facebook", text: "Facebook", link: "https: //facebook.com/appcodamobile"),(image: "instagram", text: "Instagram", link: "http s://www.instagram.com/appcodadotcom")]]
+    var sectionContent = [[(image: "store", text: "Rate us on App Store", link: "https://www.apple.com/ios/app-store/"),
+     (image: "chat", text: "Tell us your feedback", link: "http://www.appcoda.com/contact")],
+    [(image: "twitter", text: "Twitter", link: "https://twitter.com/appcodamobile"),
+     (image: "facebook", text: "Facebook", link: "https://facebook.com/appcodamobile"),
+     (image: "instagram", text: "Instagram", link: "https://www.instagram.com/appcodadotcom")]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +63,7 @@ class AboutTableTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let link = sectionContent[indexPath.section][indexPath.row].link
         
         switch indexPath.section {
@@ -66,12 +72,32 @@ class AboutTableTableViewController: UITableViewController {
                 if let url = URL(string: link) {
                     UIApplication.shared.open(url)
                 }
+            } else if indexPath.row == 1 {
+                performSegue(withIdentifier: "showWebView", sender: self)
+                //note: since this website is not HTTPS
+                //it requires disabling ATS for web views
             }
+            
+        case 1: //follow us section
+            if let url = URL(string: link) {
+                let safariController = SFSafariViewController(url: url)
+                present(safariController, animated: true, completion: nil)
+            }
+            
         default:
             break
         }
         
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showWebView" {
+            if let destinationController = segue.destination as? WebViewController, let indexPath = tableView.indexPathForSelectedRow {
+                destinationController.targetURL = sectionContent[indexPath.section][indexPath.row].link
+            }
+        }
     }
 
     /*
