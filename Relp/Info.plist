@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoadsInWebContent</key>
-		<true/>
-	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -27,6 +22,15 @@
 	<true/>
 	<key>MKDirectionsApplicationSupportedModes</key>
 	<array/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>You need to grant the app access to your camera in order to take photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You need to grant the app access to your photo library so you can pick a photo for the restaurant.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -67,10 +71,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>You need to grant the app access to your photo library so you can pick a photo for the restaurant.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>You need to grant the app access to your camera in order to take photos.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>
