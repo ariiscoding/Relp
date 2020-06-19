@@ -13,6 +13,8 @@ class DiscoverTableTableViewController: UITableViewController {
     
     
     var restaurants: [CKRecord] = [] //store iCloud results
+    
+    var spinner = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,30 +30,70 @@ class DiscoverTableTableViewController: UITableViewController {
         }
         
         fetchRecordsFromCloud()
+        
+        //settings for the spinner
+        spinner.style = .medium
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        
+        //define layout constraints for the spinner
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0), spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+        
+        //activate the spinner
+        spinner.startAnimating()
     }
     
     // MARK: - iCloud related operations
     func fetchRecordsFromCloud() {
-        //Fetch data using Convenience API
+        //Fetch data
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
-        publicDatabase.perform(query, inZoneWith: nil, completionHandler: {
-            (results, error) -> Void in
+        
+        //Create the query operation with the query (Operational API method)
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.queuePriority = .veryHigh
+        queryOperation.resultsLimit = 50
+        queryOperation.recordFetchedBlock = {(record) -> Void in
+            self.restaurants.append(record)
+        }
+        
+        queryOperation.queryCompletionBlock = {[unowned self] (cursor, error) -> Void in
             if let error = error {
-                print(error)
+                print("Failed to get data from iCloud - \(error.localizedDescription)")
                 return
             }
             
-            if let results = results {
-                print("Completed the download of Restaurant data")
-                self.restaurants = results
-                DispatchQueue.main.async {//make sure the UI update is excuted by the main thread 
-                    self.tableView.reloadData()
-                }
+            print("Successfully retrieve the data from iCloud")
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.tableView.reloadData()
             }
-        })
+        }
+        
+        //execute the query
+        publicDatabase.add(queryOperation)
+        
+        
+        //Convenience API method
+//        publicDatabase.perform(query, inZoneWith: nil, completionHandler: {
+//            (results, error) -> Void in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//
+//            if let results = results {
+//                print("Completed the download of Restaurant data")
+//                self.restaurants = results
+//                DispatchQueue.main.async {//make sure the UI update is excuted by the main thread
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        })
     }
 
     // MARK: - Table view data source
