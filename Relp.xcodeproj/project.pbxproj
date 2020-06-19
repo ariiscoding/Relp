@@ -40,6 +40,8 @@
 		728AC3B8247C9D8500C08D7B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728AC3B7247C9D8500C08D7B /* MapViewController.swift */; };
 		72A4323D24752195000185CE /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4323C24752195000185CE /* RestaurantDetailViewController.swift */; };
 		72A4324124761F08000185CE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4324024761F08000185CE /* Restaurant.swift */; };
+		72BA04AC249D6C3C0097479F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BA04AB249D6C3C0097479F /* CloudKit.framework */; };
+		72BA04AE249D75730097479F /* DiscoverTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BA04AD249D75730097479F /* DiscoverTableTableViewController.swift */; };
 		72EF2C3A249ACF2100913D4A /* Relp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72EF2C38249ACF2100913D4A /* Relp.xcdatamodeld */; };
 		F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C333292365F91600D3A311 /* AppDelegate.swift */; };
 		F4C3332C2365F91600D3A311 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3332B2365F91600D3A311 /* SceneDelegate.swift */; };
@@ -84,6 +86,9 @@
 		728AC3B7247C9D8500C08D7B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		72A4323C24752195000185CE /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		72A4324024761F08000185CE /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		72BA04AA249D6C350097479F /* Relp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Relp.entitlements; sourceTree = "<group>"; };
+		72BA04AB249D6C3C0097479F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		72BA04AD249D75730097479F /* DiscoverTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableTableViewController.swift; sourceTree = "<group>"; };
 		72EF2C39249ACF2100913D4A /* Relp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Relp.xcdatamodel; sourceTree = "<group>"; };
 		F4C333262365F91600D3A311 /* Relp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C333292365F91600D3A311 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72BA04AC249D6C3C0097479F /* CloudKit.framework in Frameworks */,
 				723F34D4249CB9900056E21F /* WebKit.framework in Frameworks */,
 				728AC3B2247C8DC900C08D7B /* MapKit.framework in Frameworks */,
 			);
@@ -122,6 +128,7 @@
 				724B2D64249C176A00EAB776 /* WalkthroughViewController.swift */,
 				723F34CF249CAFF40056E21F /* AboutTableTableViewController.swift */,
 				723F34D1249CB6A40056E21F /* WebViewController.swift */,
+				72BA04AD249D75730097479F /* DiscoverTableTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +204,7 @@
 		728AC3B0247C8DC900C08D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72BA04AB249D6C3C0097479F /* CloudKit.framework */,
 				723F34D3249CB9900056E21F /* WebKit.framework */,
 				728AC3B1247C8DC900C08D7B /* MapKit.framework */,
 			);
@@ -223,6 +231,7 @@
 		F4C333282365F91600D3A311 /* Relp */ = {
 			isa = PBXGroup;
 			children = (
+				72BA04AA249D6C350097479F /* Relp.entitlements */,
 				728AC3AB247A11A200C08D7B /* Extensions */,
 				724E686D2478867000191F34 /* Resources */,
 				724E686C24768A5200191F34 /* Storyboard */,
@@ -329,6 +338,7 @@
 				724E688824789A3F00191F34 /* RestaurantDetailTextCell.swift in Sources */,
 				F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */,
 				72A4324124761F08000185CE /* Restaurant.swift in Sources */,
+				72BA04AE249D75730097479F /* DiscoverTableTableViewController.swift in Sources */,
 				72EF2C3A249ACF2100913D4A /* Relp.xcdatamodeld in Sources */,
 				724E688424788D6E00191F34 /* RestaurantDetailHeaderView.swift in Sources */,
 				72A4323D24752195000185CE /* RestaurantDetailViewController.swift in Sources */,
@@ -496,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Relp/Relp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7587Q3Y2NY;
 				INFOPLIST_FILE = Relp/Info.plist;
@@ -514,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Relp/Relp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7587Q3Y2NY;
 				INFOPLIST_FILE = Relp/Info.plist;
