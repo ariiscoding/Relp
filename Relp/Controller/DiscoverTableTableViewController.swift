@@ -54,7 +54,7 @@ class DiscoverTableTableViewController: UITableViewController {
         
         //Create the query operation with the query (Operational API method)
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.desiredKeys = ["name"]
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordFetchedBlock = {(record) -> Void in
@@ -76,24 +76,6 @@ class DiscoverTableTableViewController: UITableViewController {
         
         //execute the query
         publicDatabase.add(queryOperation)
-        
-        
-        //Convenience API method
-//        publicDatabase.perform(query, inZoneWith: nil, completionHandler: {
-//            (results, error) -> Void in
-//            if let error = error {
-//                print(error)
-//                return
-//            }
-//
-//            if let results = results {
-//                print("Completed the download of Restaurant data")
-//                self.restaurants = results
-//                DispatchQueue.main.async {//make sure the UI update is excuted by the main thread
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        })
     }
 
     // MARK: - Table view data source
@@ -116,11 +98,39 @@ class DiscoverTableTableViewController: UITableViewController {
         let restaurant = restaurants[indexPath.row]
         cell.textLabel?.text = restaurant.object(forKey: "name") as? String
         
-        if let image = restaurant.object(forKey:"image"), let imageAsset = image as? CKAsset {
-            if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
-                cell.imageView?.image = UIImage(data: imageData)
+        //lazy loading: set the default image
+        cell.imageView?.image = UIImage(systemName: "photo")
+        
+        //fetchimage from Cloud in background
+        let publicDatabase = CKContainer.default().publicCloudDatabase
+        let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
+        fetchRecordsImageOperation.desiredKeys = ["image"]
+        fetchRecordsImageOperation.queuePriority = .veryHigh
+        
+        fetchRecordsImageOperation.perRecordCompletionBlock = {(record, recordId, error) -> Void in
+            if let error = error {
+                print("Failed to get restaurant image: \(error.localizedDescription)")
+                return
+            }
+            
+            if let restaurantRecord = record, let image = restaurantRecord.object(forKey: "image"), let imageAsset = image as? CKAsset {
+                if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
+                    //Replace the placeholder image with the restaurant image
+                    DispatchQueue.main.async {
+                        cell.imageView?.image = UIImage(data: imageData)
+                        cell.setNeedsLayout()
+                    }
+                }
             }
         }
+        
+        publicDatabase.add(fetchRecordsImageOperation)
+        
+//        if let image = restaurant.object(forKey:"image"), let imageAsset = image as? CKAsset {
+//            if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
+//                cell.imageView?.image = UIImage(data: imageData)
+//            }
+//        }
 
         return cell
     }
