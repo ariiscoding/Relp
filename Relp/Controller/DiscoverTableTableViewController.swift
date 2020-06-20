@@ -49,7 +49,7 @@ class DiscoverTableTableViewController: UITableViewController {
         
         //Pull to Refresh control
         refreshControl = UIRefreshControl()
-        refreshControl?.backgroundColor = UIColor.white
+        //refreshControl?.backgroundColor = UIColor.white
         refreshControl?.tintColor = UIColor.gray
         refreshControl?.addTarget(self, action: #selector(fetchRecordsFromCloud), for: UIControl.Event.valueChanged)
     }

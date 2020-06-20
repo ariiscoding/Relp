@@ -23,11 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DiscoverCell" rowHeight="400" id="V7n-xx-d8i" customClass="DiscoverTableViewCell" customModule="Relp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="400"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DiscoverCell" id="V7n-xx-d8i" customClass="DiscoverTableViewCell" customModule="Relp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="400.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V7n-xx-d8i" id="G4N-ru-68v">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="400.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FfK-Wn-YQp">
