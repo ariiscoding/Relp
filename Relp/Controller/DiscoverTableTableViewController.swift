@@ -44,10 +44,22 @@ class DiscoverTableTableViewController: UITableViewController {
         
         //activate the spinner
         spinner.startAnimating()
+        
+        
+        
+        //Pull to Refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.white
+        refreshControl?.tintColor = UIColor.gray
+        refreshControl?.addTarget(self, action: #selector(fetchRecordsFromCloud), for: UIControl.Event.valueChanged)
     }
     
     // MARK: - iCloud related operations
-    func fetchRecordsFromCloud() {
+    @objc func fetchRecordsFromCloud() {
+        //remove existing records beofre refreshing
+        restaurants.removeAll()
+        tableView.reloadData()
+        
         //Fetch data
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
@@ -73,6 +85,12 @@ class DiscoverTableTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 self.tableView.reloadData()
+                
+                if let refreshControl = self.refreshControl {
+                    if refreshControl.isRefreshing {
+                        refreshControl.endRefreshing()
+                    }
+                }
             }
         }
         
