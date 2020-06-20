@@ -111,6 +111,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="FfK-Wn-YQp" firstAttribute="top" secondItem="G4N-ru-68v" secondAttribute="topMargin" constant="5" id="87l-bW-wQ2"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="FfK-Wn-YQp" secondAttribute="bottom" constant="6" id="P2w-AA-fyf"/>
                                         <constraint firstItem="FfK-Wn-YQp" firstAttribute="trailing" secondItem="G4N-ru-68v" secondAttribute="trailingMargin" id="Psj-YM-fxW"/>
                                         <constraint firstItem="FfK-Wn-YQp" firstAttribute="leading" secondItem="G4N-ru-68v" secondAttribute="leadingMargin" id="gkG-dr-YD5"/>
                                     </constraints>

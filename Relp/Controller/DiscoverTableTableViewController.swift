@@ -68,7 +68,7 @@ class DiscoverTableTableViewController: UITableViewController {
         
         //Create the query operation with the query (Operational API method)
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name"]
+        queryOperation.desiredKeys = ["name","type","location","phone","description"]
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordFetchedBlock = {(record) -> Void in
