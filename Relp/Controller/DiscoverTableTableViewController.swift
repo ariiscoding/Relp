@@ -11,6 +11,13 @@ import CloudKit //to use CloudKit
 
 class DiscoverTableTableViewController: UITableViewController {
     
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var typeLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var phoneLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    
     
     var restaurants: [CKRecord] = [] //store iCloud results
     
@@ -68,7 +75,7 @@ class DiscoverTableTableViewController: UITableViewController {
         
         //Create the query operation with the query (Operational API method)
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name"]
+        queryOperation.desiredKeys = ["name", "type","location","phone","description"]
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordFetchedBlock = {(record) -> Void in
@@ -116,17 +123,17 @@ class DiscoverTableTableViewController: UITableViewController {
 
         //Configure the cell
         let restaurant = restaurants[indexPath.row]
-        cell.textLabel?.text = restaurant.object(forKey: "name") as? String
+        nameLabel.text = restaurant.object(forKey: "name") as? String
         
         //lazy loading: set the default image
-        cell.imageView?.image = UIImage(systemName: "photo")
+        imageView.image = UIImage(systemName: "photo")
         
         //check if the image is stored in cache
         if let imageFileURL = imageCache.object(forKey: restaurant.recordID) {
             //Fetch image from cache
             print("Getting image from cache")
             if let imageData = try? Data.init(contentsOf: imageFileURL as URL) {
-                cell.imageView?.image = UIImage(data: imageData)
+                imageView.image = UIImage(data: imageData)
             }
         } else {
             //fetchimage from Cloud in background
@@ -145,7 +152,7 @@ class DiscoverTableTableViewController: UITableViewController {
                     if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
                         //Replace the placeholder image with the restaurant image
                         DispatchQueue.main.async {
-                            cell.imageView?.image = UIImage(data: imageData)
+                            self.imageView.image = UIImage(data: imageData)
                             cell.setNeedsLayout()
                         }
                         
