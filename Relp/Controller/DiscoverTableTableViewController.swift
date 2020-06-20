@@ -112,21 +112,25 @@ class DiscoverTableTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath) as! DiscoverTableViewCell
 
         //Configure the cell
         let restaurant = restaurants[indexPath.row]
-        cell.textLabel?.text = restaurant.object(forKey: "name") as? String
+        cell.nameLabel.text = restaurant.object(forKey: "name") as? String
+        cell.typeLabel.text = restaurant.object(forKey: "type") as? String
+        cell.phoneLabel.text = restaurant.object(forKey: "phone") as? String
+        cell.locationLabel.text = restaurant.object(forKey: "location") as? String
+        cell.descriptionLabel.text = restaurant.object(forKey: "description") as? String
         
         //lazy loading: set the default image
-        cell.imageView?.image = UIImage(systemName: "photo")
+        cell.featuredImageView.image = UIImage(systemName: "photo")
         
         //check if the image is stored in cache
         if let imageFileURL = imageCache.object(forKey: restaurant.recordID) {
             //Fetch image from cache
             print("Getting image from cache")
             if let imageData = try? Data.init(contentsOf: imageFileURL as URL) {
-                cell.imageView?.image = UIImage(data: imageData)
+                cell.featuredImageView.image = UIImage(data: imageData)
             }
         } else {
             //fetchimage from Cloud in background
@@ -145,7 +149,7 @@ class DiscoverTableTableViewController: UITableViewController {
                     if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
                         //Replace the placeholder image with the restaurant image
                         DispatchQueue.main.async {
-                            cell.imageView?.image = UIImage(data: imageData)
+                            cell.featuredImageView.image = UIImage(data: imageData)
                             cell.setNeedsLayout()
                         }
                         

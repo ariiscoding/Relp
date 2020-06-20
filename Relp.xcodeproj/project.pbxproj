@@ -42,6 +42,7 @@
 		72A4324124761F08000185CE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4324024761F08000185CE /* Restaurant.swift */; };
 		72BA04AC249D6C3C0097479F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BA04AB249D6C3C0097479F /* CloudKit.framework */; };
 		72BA04AE249D75730097479F /* DiscoverTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BA04AD249D75730097479F /* DiscoverTableTableViewController.swift */; };
+		72BA04B0249DEFE00097479F /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BA04AF249DEFE00097479F /* DiscoverTableViewCell.swift */; };
 		72EF2C3A249ACF2100913D4A /* Relp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72EF2C38249ACF2100913D4A /* Relp.xcdatamodeld */; };
 		F4C3332A2365F91600D3A311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C333292365F91600D3A311 /* AppDelegate.swift */; };
 		F4C3332C2365F91600D3A311 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3332B2365F91600D3A311 /* SceneDelegate.swift */; };
@@ -89,6 +90,7 @@
 		72BA04AA249D6C350097479F /* Relp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Relp.entitlements; sourceTree = "<group>"; };
 		72BA04AB249D6C3C0097479F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		72BA04AD249D75730097479F /* DiscoverTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableTableViewController.swift; sourceTree = "<group>"; };
+		72BA04AF249DEFE00097479F /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		72EF2C39249ACF2100913D4A /* Relp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Relp.xcdatamodel; sourceTree = "<group>"; };
 		F4C333262365F91600D3A311 /* Relp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C333292365F91600D3A311 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				728AC3B3247C91C300C08D7B /* RestaurantDetailSeparatorCell.swift */,
 				728AC3B5247C92AE00C08D7B /* RestaurantDetailMapCell.swift */,
 				72314200249961DB00F9428C /* RoundedTextField.swift */,
+				72BA04AF249DEFE00097479F /* DiscoverTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				728AC3AF247A155200C08D7B /* UINavigationController+Ext.swift in Sources */,
+				72BA04B0249DEFE00097479F /* DiscoverTableViewCell.swift in Sources */,
 				F4C33340236603E800D3A311 /* RestaurantTableViewCell.swift in Sources */,
 				724B2D63249C106600EAB776 /* WalkthroughPageViewController.swift in Sources */,
 				723141FF24983DDA00F9428C /* ReviewViewController.swift in Sources */,
