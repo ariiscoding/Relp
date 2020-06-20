@@ -15,6 +15,8 @@ class DiscoverTableTableViewController: UITableViewController {
     var restaurants: [CKRecord] = [] //store iCloud results
     
     var spinner = UIActivityIndicatorView()
+    
+    private var imageCache = NSCache<CKRecord.ID, NSURL>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,36 +103,42 @@ class DiscoverTableTableViewController: UITableViewController {
         //lazy loading: set the default image
         cell.imageView?.image = UIImage(systemName: "photo")
         
-        //fetchimage from Cloud in background
-        let publicDatabase = CKContainer.default().publicCloudDatabase
-        let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
-        fetchRecordsImageOperation.desiredKeys = ["image"]
-        fetchRecordsImageOperation.queuePriority = .veryHigh
-        
-        fetchRecordsImageOperation.perRecordCompletionBlock = {(record, recordId, error) -> Void in
-            if let error = error {
-                print("Failed to get restaurant image: \(error.localizedDescription)")
-                return
+        //check if the image is stored in cache
+        if let imageFileURL = imageCache.object(forKey: restaurant.recordID) {
+            //Fetch image from cache
+            print("Getting image from cache")
+            if let imageData = try? Data.init(contentsOf: imageFileURL as URL) {
+                cell.imageView?.image = UIImage(data: imageData)
             }
+        } else {
+            //fetchimage from Cloud in background
+            let publicDatabase = CKContainer.default().publicCloudDatabase
+            let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
+            fetchRecordsImageOperation.desiredKeys = ["image"]
+            fetchRecordsImageOperation.queuePriority = .veryHigh
             
-            if let restaurantRecord = record, let image = restaurantRecord.object(forKey: "image"), let imageAsset = image as? CKAsset {
-                if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
-                    //Replace the placeholder image with the restaurant image
-                    DispatchQueue.main.async {
-                        cell.imageView?.image = UIImage(data: imageData)
-                        cell.setNeedsLayout()
+            fetchRecordsImageOperation.perRecordCompletionBlock = {[unowned self] (record, recordId, error) -> Void in
+                if let error = error {
+                    print("Failed to get restaurant image: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let restaurantRecord = record, let image = restaurantRecord.object(forKey: "image"), let imageAsset = image as? CKAsset {
+                    if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
+                        //Replace the placeholder image with the restaurant image
+                        DispatchQueue.main.async {
+                            cell.imageView?.image = UIImage(data: imageData)
+                            cell.setNeedsLayout()
+                        }
+                        
+                        //add the image url to cache
+                        self.imageCache.setObject(imageAsset.fileURL! as NSURL, forKey: restaurant.recordID)
                     }
                 }
             }
+            
+            publicDatabase.add(fetchRecordsImageOperation)
         }
-        
-        publicDatabase.add(fetchRecordsImageOperation)
-        
-//        if let image = restaurant.object(forKey:"image"), let imageAsset = image as? CKAsset {
-//            if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
-//                cell.imageView?.image = UIImage(data: imageData)
-//            }
-//        }
 
         return cell
     }
