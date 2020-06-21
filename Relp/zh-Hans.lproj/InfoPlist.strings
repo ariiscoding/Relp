@@ -1,0 +1,9 @@
+/* Bundle name */
+"CFBundleName" = "吃货宝典";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "我们需要使用照相机来为餐厅添加照片";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "我们需要访问你的相册来为餐厅添加照片";
+

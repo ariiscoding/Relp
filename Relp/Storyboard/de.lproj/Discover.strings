@@ -1,0 +1,21 @@
+
+/* Class = "UITabBarItem"; title = "Discover"; ObjectID = "1b0-XE-PCT"; */
+"1b0-XE-PCT.title" = "Discover";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "4NP-Ye-umd"; */
+"4NP-Ye-umd.text" = "Description";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "JzN-9D-bbG"; */
+"JzN-9D-bbG.text" = "Phone";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "bfE-mX-51e"; */
+"bfE-mX-51e.text" = "Address";
+
+/* Class = "UILabel"; text = "type"; ObjectID = "idV-WV-PGV"; */
+"idV-WV-PGV.text" = "type";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "lOw-kK-6iI"; */
+"lOw-kK-6iI.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Discover"; ObjectID = "saJ-Di-oPX"; */
+"saJ-Di-oPX.title" = "Discover";
