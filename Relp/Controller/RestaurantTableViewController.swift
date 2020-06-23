@@ -287,6 +287,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     override func viewDidAppear(_ animated: Bool) {
         //if viewed walkthrough before
         if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
+            //if the user has gone through the onboarding before the update, we should still create haptic touch menu
+            if UIApplication.shared.shortcutItems?.count ?? 0 == 0 {
+                WalkthroughViewController().createQuickActions()
+            }
             return 
         }
         
