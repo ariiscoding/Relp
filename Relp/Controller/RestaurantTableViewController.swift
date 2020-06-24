@@ -405,6 +405,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         content.body = "I recommend you to try out \(suggestedRestaurant.name!). The restaurant is one of your favorites. It is located at \(suggestedRestaurant.location!). Would you like to give it a try?"
         content.sound = UNNotificationSound.default
         
+        
+        //store phone number
+        content.userInfo = ["phone": suggestedRestaurant.phone!]
+        
         //load image
         let tempDirURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         let tempFileURL = tempDirURL.appendingPathComponent("suggested-restaurant.jpg")
@@ -415,6 +419,15 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
                 content.attachments = [restaurantImage]
             }
         }
+        
+        //notification actions
+        let categoryIdentifier = "relp.restaurantaction"
+        let makeReservationAction = UNNotificationAction(identifier: "relp.makeReservation", title: "Reserve a table", options: [.foreground])
+        let cancelAction = UNNotificationAction(identifier: "relp.cancel", title: "Later", options: [])
+        let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [makeReservationAction, cancelAction], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        content.categoryIdentifier = categoryIdentifier
+        
         
         let trigeer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         let request = UNNotificationRequest(identifier: "relp.restaurantSuggession", content: content, trigger: trigeer)

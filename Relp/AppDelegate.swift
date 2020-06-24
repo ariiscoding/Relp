@@ -29,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        
+        //set notification center delegate
+        UNUserNotificationCenter.current().delegate = self 
+        
         return true
     }
 
@@ -70,5 +74,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+
+//extension for notification action
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.actionIdentifier == "relp.makeReservation" {
+            print("Making reservation...")
+            if let phone = response.notification.request.content.userInfo["phone"] {
+                let telURL = "tel://\(phone)"
+                if let url = URL(string: telURL) {
+                    if UIApplication.shared.canOpenURL(url) {
+                        print("calling \(telURL)")
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+        }
+        
+        completionHandler()
+    }
 }
 
