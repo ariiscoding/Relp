@@ -429,7 +429,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         content.categoryIdentifier = categoryIdentifier
         
         
-        let trigeer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let trigeer = UNTimeIntervalNotificationTrigger(timeInterval: 24 * 24 * 60, repeats: false) //here to set interval time
         let request = UNNotificationRequest(identifier: "relp.restaurantSuggession", content: content, trigger: trigeer)
         
         //Schedule the notification
