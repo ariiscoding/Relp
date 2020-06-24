@@ -41,7 +41,56 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
+    
+    
+    
+    // MARK: - Haptic Touch menu
+    enum QuickAction: String {
+        case OpenFavorites = "OpenFavorites"
+        case OpenDiscover = "OpenDiscover"
+        case NewRestaurant = "NewRestaurant"
+        
+        init?(fullIdentifier: String) {
+            
+            guard let shortcutIdentifier = fullIdentifier.components(separatedBy: ".").last else {
+                return nil
+            }
+            
+            self.init(rawValue: shortcutIdentifier)
+        }
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleQuickAction(shortcutItem: shortcutItem))
+    }
+    
+    private func handleQuickAction(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        
+        let shortcutType = shortcutItem.type
+        guard let shortcutIdentifier = QuickAction(fullIdentifier: shortcutType) else {
+            return false
+        }
+        
+        guard let tabBarController = window?.rootViewController as? UITabBarController else {
+            return false
+        }
+        
+        switch shortcutIdentifier {
+        case .OpenFavorites:
+            tabBarController.selectedIndex = 0
+        case .OpenDiscover:
+            tabBarController.selectedIndex = 1
+        case .NewRestaurant:
+            if let navController = tabBarController.viewControllers?[0] {
+                let restaurantTableViewController = navController.children[0] //retrieve the restaurant table view controller from the tab bar controller
+                restaurantTableViewController.performSegue(withIdentifier: "addRestaurant", sender: restaurantTableViewController)
+            } else {
+                return false
+            }
+        }
+        
+        return true
+    }
 
 }
 
