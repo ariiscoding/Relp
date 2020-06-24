@@ -1,5 +1,6 @@
 import UIKit
 import CoreData
+import UserNotifications
 
 class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
 
@@ -62,6 +63,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         //searchController.searchBar.barTintColor = .white //doesn't work well with dark mode
         searchController.searchBar.backgroundImage = UIImage()
         searchController.searchBar.tintColor = UIColor(red: 231, green: 76, blue: 60)
+        
+        //Notification
+        prepareNotification()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -380,5 +385,41 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         animator.addCompletion {
             self.show(restaurantDetailViewController, sender: self)
         }
+    }
+    
+    //MARK: - Notification related
+    func prepareNotification() {
+        //Make sure the restaurant array is not empty
+        if restaurants.count <= 0 {
+            return 
+        }
+        
+        //pick a restaurant randomly
+        let randomNum = Int.random(in: 0..<restaurants.count)
+        let suggestedRestaurant = restaurants[randomNum]
+        
+        //Create the user notification
+        let content = UNMutableNotificationContent()
+        content.title = "Restaurant Recommendation"
+        content.subtitle = "Try new food today"
+        content.body = "I recommend you to try out \(suggestedRestaurant.name!). The restaurant is one of your favorites. It is located at \(suggestedRestaurant.location!). Would you like to give it a try?"
+        content.sound = UNNotificationSound.default
+        
+        //load image
+        let tempDirURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        let tempFileURL = tempDirURL.appendingPathComponent("suggested-restaurant.jpg")
+        
+        if let image = UIImage(data: suggestedRestaurant.image! as Data) {
+            try? image.jpegData(compressionQuality: 1.0)?.write(to: tempFileURL)
+            if let restaurantImage = try? UNNotificationAttachment(identifier: "restaurantImage", url: tempFileURL, options: nil){
+                content.attachments = [restaurantImage]
+            }
+        }
+        
+        let trigeer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let request = UNNotificationRequest(identifier: "relp.restaurantSuggession", content: content, trigger: trigeer)
+        
+        //Schedule the notification
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
