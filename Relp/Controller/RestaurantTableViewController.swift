@@ -299,4 +299,65 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             present(walkthroughViewController, animated: true, completion: nil)
         }
     }
+    
+    
+    // MARK: - Contextual Menu
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        //return an object that contains the menu items and the preview provider
+        
+        let configuration = UIContextMenuConfiguration(identifier: indexPath.row as NSCopying, previewProvider: {
+            
+            guard let restaurantDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "RestaurantDetailViewController") as? RestaurantDetailViewController else {
+                return nil
+            }
+            
+            let selectedRestaurant = self.restaurants[indexPath.row]
+            restaurantDetailViewController.restaurant = selectedRestaurant
+            
+            return restaurantDetailViewController
+            
+        }, actionProvider: {actions in
+            
+            let checkInAction = UIAction(title: "Check-in", image: UIImage(systemName: "checkmark")) { action in
+                
+                let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
+                self.restaurants[indexPath.row].isVisited = self.restaurants[indexPath.row].isVisited ? false : true
+                cell.heartImageView.isHidden = self.restaurants[indexPath.row].isVisited ? false : true
+            }
+            
+            let shareAction = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { action in
+                
+                let defaultText = NSLocalizedString("Just checking in at ", comment: "Just checking in at ") + self.restaurants[indexPath.row].name!
+                
+                let activityController: UIActivityViewController
+                
+                if let restauranImage = self.restaurants[indexPath.row].image, let imageToShare = UIImage(data: restauranImage as Data) {
+                    
+                    activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+                } else {
+                    activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+                }
+                
+                self.present(activityController, animated: true, completion: nil)
+            }
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+                
+                // Delete the row from the data store
+                if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                    
+                    let context = appDelegate.persistentContainer.viewContext
+                    let restaurantToDelete = self.fetchResultController.object(at: indexPath)
+                    context.delete(restaurantToDelete)
+                    
+                    appDelegate.saveContext()
+                }
+            }
+            
+            //Create and resturn a UIMenu with the share action
+            return UIMenu(title: "", children: [checkInAction, shareAction, deleteAction])
+        })
+        
+        return configuration
+    }
 }
